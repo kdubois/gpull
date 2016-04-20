@@ -1,0 +1,43 @@
+# Rename this file to 'settings.yaml' and change it according to your needs.
+
+EmailSettings:
+  email_host : your_email_host
+  email_from : youremail@email.com
+  email_to: youremail@email.com
+
+DefaultDir: /var/www
+
+Repositories:
+  - gpull
+  - repo2
+
+Environments:
+  - local
+  - dev
+  - test
+  - stage
+  - prod
+
+ServerGroups:
+  - group1
+  - group2
+
+Servers:
+  - server1-dev:
+    url: ['server1.dev', 'server2.dev']
+    env: dev
+    group: group1
+    git_user: sitepusher
+    descr: description of server 1 on dev
+  - cron-server-test:
+    url: ['cron-server1.test']
+    env: test
+    group: group1
+    git_user: www-data
+    descr: description of cron server test
+  - server2-test:
+    url: ['cron-server2.test']
+    env: test
+    group: group2
+    git_user: sitepusher
+    descr: description of test server in group 2
