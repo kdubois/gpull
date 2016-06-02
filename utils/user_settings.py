@@ -16,8 +16,9 @@ class UserSettings(object):
 
             # create user_settings table if it doesn't exist yet.
             self.create_table('user_settings')
-        except:
-            return False
+        except Exception as e:
+            print("User Settings error: {0}".format(e))
+            return None
 
     def save_ssh_user(self, user):
         """

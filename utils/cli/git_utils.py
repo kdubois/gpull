@@ -63,7 +63,7 @@ class GitUtils(object):
         # key to current ssh connection in the connections list
         self.current_conn_key = None
 
-    def remote_pull(self, paths, branch, force, servers, remote_user, pw, all_dirs=False):
+    def remote_pull(self, paths, branch, force, servers, remote_user, pw, all_dirs=False, remote_path=None):
         """
         Do a git pull on remote servers
         :param paths: list of paths to update
@@ -73,8 +73,12 @@ class GitUtils(object):
         :param remote_user: string of ssh user
         :param pw: string ssh password
         :param all_dirs:
+        :param remote_path
         :return:
         """
+
+        if remote_path is not None:
+            self.gpull_local_location = remote_path
 
         if paths is not None:
             # loop through paths

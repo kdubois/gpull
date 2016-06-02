@@ -15,7 +15,6 @@ __version__ = '1.0.0'
 
 
 class GitPull(object):
-
     def __init__(self):
         """instantiate default variables to be used in the class"""
         # dict of server aliases and properties
@@ -43,6 +42,9 @@ class GitPull(object):
         parser.add_argument('-a', '--all', nargs='?', default=False, metavar="recurse through all directories",
                             help="""Recurse through all subdirectories to find git repos.""")
 
+        parser.add_argument('-r', '--remote', nargs='?', default=None, metavar="remote location for gpull_local.py",
+                            help="""Remote location of gpull_local.py, eg /usr/local/bin/gpull_local.py """)
+
         # get all aliases and sort them for help convenience
         all_aliases = sorted(
             list(self.server_aliases.keys()) +
@@ -66,7 +68,8 @@ class GitPull(object):
             pw = None  # No password needed to update your local folders
 
         gitutils = git_utils.GitUtils()
-        gitutils.remote_pull(args.path, args.branch, args.force, args.servers, args.remote_user, pw, args.all)
+        gitutils.remote_pull(args.path, args.branch, args.force, args.servers, args.remote_user, pw, args.all,
+                             args.remote)
 
 
 if __name__ == "__main__":
