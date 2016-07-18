@@ -248,7 +248,7 @@ class GitUtils(object):
         # if we haven't already started this connection, start it
         if url not in self.connections:
             try:
-                paramiko.util.log_to_file("paramiko.log")
+                # paramiko.util.log_to_file("paramiko.log")
                 ssh = paramiko.SSHClient()
                 ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
                 ssh.allow_agent = False
