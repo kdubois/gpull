@@ -23,19 +23,19 @@ ServerGroups:
   - group2
 
 Servers:
-  - server1-dev:
+ server1-dev:
     url: ['server1.dev', 'server2.dev']
     env: dev
     group: group1
     git_user: sitepusher
     descr: description of server 1 on dev
-  - cron-server-test:
+ cron-server-test:
     url: ['cron-server1.test']
     env: test
     group: group1
     git_user: www-data
     descr: description of cron server test
-  - server2-test:
+ server2-test:
     url: ['cron-server2.test']
     env: test
     group: group2
