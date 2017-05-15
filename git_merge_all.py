@@ -16,7 +16,7 @@ class GitMergeAll(object):
     def main(self):
         """Parse arguments and then call the appropriate function(s)."""
 
-        parser = argparse.ArgumentParser(description="""Merge given branch into stage & push to all MCS stage boxes""")
+        parser = argparse.ArgumentParser(description="""Merge one branch (-b) to another (-t)""")
 
         parser.add_argument('-b', '--branch', nargs='?', metavar="branch", required=True,
                             help="""branch to merge from""")
