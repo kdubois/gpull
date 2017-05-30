@@ -31,6 +31,7 @@ class GitUtils(object):
         self.config = Config()
         # default directory, if none was passed in
         self.default_dir = self.config.default_dir
+        self.git_server = self.config.get_git_server()
 
         self.gpull_local_location = os.path.join(this_dir, os.pardir, os.pardir, 'gpull_local.py')
 
@@ -201,13 +202,13 @@ class GitUtils(object):
         for repo in self.config.repositories:
             os.chdir(working_path)
             out(1, blue("\n------- REPO: " + repo + " -------"))
-            # see if the repo exists in /var/www
+            # see if the repo exists
             path = working_path+'/'+repo
 
             output = ''
             try:
                 if not os.path.exists(path):
-                    output += self.exec_shell('git clone git@gitlab.pgx.local:mcs/'+repo+'.git')
+                    output += self.exec_shell('git clone '+self.git_server+'/'+repo+'.git ' + path)
 
                     if 'Access denied.' in output:
                         out(2, yellow('skipped'))
@@ -231,6 +232,7 @@ class GitUtils(object):
 
             except Exception as e:
                 out(2, red('Error: '))
+                out(2, red(output))
                 out(2, red(e))
                 return False
         return output

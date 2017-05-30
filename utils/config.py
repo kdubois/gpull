@@ -76,10 +76,19 @@ class Config(object):
 
     def get_default_dir(self):
 
-        if [self.config['DefaultDir']] is None:
+        if self.config['DefaultDir'] is None:
             return os.getcwd()
         else:
             return self.config['DefaultDir']
+
+    def get_default_merge_dir(self):
+
+        if self.config['MergeDir'] is None:
+            raise AttributeError(
+                'MergeDir must be set in settings.yml config file'
+            )
+        else:
+            return self.config['MergeDir']
 
     def get_repositories(self):
 
@@ -93,3 +102,11 @@ class Config(object):
             repositories = self.config['Repositories']
 
         return repositories
+
+    def get_git_server(self):
+        if self.config['GitServer'] is None:
+            raise AttributeError(
+                'GitServer must be set in settings.yml config file'
+            )
+        else:
+            return self.config['GitServer']

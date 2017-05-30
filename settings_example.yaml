@@ -6,6 +6,7 @@ EmailSettings:
   email_to: youremail@email.com
 
 DefaultDir: /var/www
+MergeDir: /var/release
 
 Repositories:
   - gpull
@@ -41,3 +42,6 @@ Servers:
     group: group2
     git_user: sitepusher
     descr: description of test server in group 2
+
+GitServer:
+  git@github.com:kdubois
